@@ -1,0 +1,41 @@
+@import "bootstrap"
+@import "compass/css3"
+
+body
+  padding-top: 80px
+
+#main
+  canvas
+    width: 100%
+    height: 400px
+    +box-shadow
+
+dt
+  display: inline
+
+dd
+  color: $grayLight
+  display: inline-block
+  margin-left: 0px
+  text-align: right
+  width: 60px
+
+dl
+  color: $gray
+  margin-top: 0px
+
+  h4
+    display: inline-block
+    font-variant: small-caps
+    text-align: right
+    text-decoration: underline
+    width: 60px
+
+.component
+  h2
+    +background-image(linear-gradient(#fff, #ccc, #aaa))
+
+    font-size: 12px
+    height: 16px
+    line-height: 16px
+    text-align: center
