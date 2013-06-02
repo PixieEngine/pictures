@@ -15,6 +15,10 @@ $("#data").append JST["templates/data"](
     points: 5
 )
 
+stepsElement = $(JST["templates/steps"]())
+$("#steps").append stepsElement
+ko.applyBindings {steps: steps}, stepsElement.get(0)
+
 canvas = $("canvas#lower").pixieCanvas()
 upperCanvas = $("canvas#upper").pixieCanvas()
 

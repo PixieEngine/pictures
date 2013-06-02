@@ -1,1 +1,2 @@
-steps.jst.hamlc
+.steps(data-bind="foreach: steps")
+  .step(data-bind="text: description()")
