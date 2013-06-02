@@ -15,30 +15,36 @@ $("#data").append JST["templates/data"](
     points: 5
 )
 
+canvas = $("canvas#lower").pixieCanvas()
+upperCanvas = $("canvas#upper").pixieCanvas()
 
-canvas = $("canvas").pixieCanvas()
+start = null
+
+localPosition = (event) ->
+  offset = $(event.currentTarget).offset()
+
+  x: event.pageX - offset.left
+  y: event.pageY - offset.top
 
 $("canvas").bind
-  movestart: (event) ->
-    offset = $(event.currentTarget).offset()
+  "touchstart mousedown": (event) ->
+    start = localPosition(event)
 
-    x = event.pageX - offset.left
-    y = event.pageY - offset.top
+  "touchmove mousemove": (event) ->
+    return unless start
 
-    canvas.drawCircle
-      x: x
-      y: y
-      radius: 10
-      color: "green"
+    upperCanvas.clear()
+    upperCanvas.drawLine
+      start: start
+      end: localPosition(event)
 
-  moveend: (event) ->
-    offset = $(event.currentTarget).offset()
+  "touchend mouseup": (event) ->
+    step = Step
+      start: start
+      end: localPosition(event)
 
-    x = event.pageX - offset.left
-    y = event.pageY - offset.top
+    step.perform(canvas)
 
-    canvas.drawCircle
-      x: x
-      y: y
-      radius: 10
-      color: "orange"
+    steps.push step
+
+    start = null

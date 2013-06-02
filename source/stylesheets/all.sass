@@ -1,12 +1,19 @@
 @import "bootstrap"
 @import "compass/css3"
 
+body
+  +user-select(none)
+
 #pictures
   height: 160px
 
-#main
+#viewport
+  +box-shadow
+
+  height: 400px
+
   canvas
-    +box-shadow
+    position: absolute
 
 dt
   display: inline
