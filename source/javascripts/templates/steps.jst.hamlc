@@ -1,4 +1,4 @@
 .steps(data-bind="foreach: steps")
   .step
     .image
-    .description(data-bind="text: description()")
+    .description(data-bind="template: {name: template}")

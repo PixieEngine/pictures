@@ -1,8 +1,9 @@
 namespace "Models", (Models) ->
   Models.Rectangle = (I={}) ->
     I: I
-    description: () ->
-      "Draw rectangle from #{I.start.x()}, #{I.start.y()} to #{I.end.x()}, #{I.end.y()}"
+
+    template: ->
+      "description/rectangle"
 
     perform: (canvas) ->
       canvas.drawRect

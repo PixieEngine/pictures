@@ -2,8 +2,8 @@ namespace "Models", (Models) ->
   Models.Line = (I={}) ->
     I: I
 
-    description: () ->
-      "Draw line from #{I.start.x()}, #{I.start.y()} to #{I.end.x()}, #{I.end.y()}"
+    template: ->
+      "description/line"
 
     perform: (canvas) ->
       canvas.drawLine

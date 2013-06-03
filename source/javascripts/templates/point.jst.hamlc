@@ -1,0 +1,2 @@
+%input.bindy(data-bind="value: x")
+%input.bindy(data-bind="value: y")

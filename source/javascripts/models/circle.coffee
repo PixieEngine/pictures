@@ -1,8 +1,9 @@
 namespace "Models", (Models) ->
   Models.Circle = (I={}) ->
     I: I
-    description: () ->
-      "Draw circle with radius #{@radius()} at #{I.start.x()}, #{I.start.y()}"
+
+    template: ->
+      "description/circle"
 
     radius: ->
       dx = I.end.x() - I.start.x()
