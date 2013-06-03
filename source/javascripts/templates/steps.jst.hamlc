@@ -1,2 +1,4 @@
 .steps(data-bind="foreach: steps")
-  .step(data-bind="text: description()")
+  .step
+    .image
+    .description(data-bind="text: description()")

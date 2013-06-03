@@ -3,6 +3,7 @@
 #= require "knockout-2.2.1.js"
 #= require bootstrap
 #= require cornerstone
+#= require namespace
 
 #= require_tree .
 
@@ -22,33 +23,31 @@ ko.applyBindings {steps: steps}, stepsElement.get(0)
 canvas = $("canvas#lower").pixieCanvas()
 upperCanvas = $("canvas#upper").pixieCanvas()
 
-start = null
-
 localPosition = (event) ->
   offset = $(event.currentTarget).offset()
 
   x: event.pageX - offset.left
   y: event.pageY - offset.top
 
+activeStep = null
+
 $("canvas").bind
   "touchstart mousedown": (event) ->
-    start = localPosition(event)
+    activeStep = Models.Rectangle
+      start: Observable.Point localPosition(event)
+      end: Observable.Point localPosition(event)
 
   "touchmove mousemove": (event) ->
-    return unless start
+    return unless activeStep
 
     upperCanvas.clear()
-    upperCanvas.drawLine
-      start: start
-      end: localPosition(event)
+
+    activeStep.I.end.set(localPosition(event))
+
+    activeStep.perform(upperCanvas)
 
   "touchend mouseup": (event) ->
-    step = Step
-      start: start
-      end: localPosition(event)
+    activeStep.perform(canvas)
+    steps.push activeStep
 
-    step.perform(canvas)
-
-    steps.push step
-
-    start = null
+    activeStep = null
