@@ -5,11 +5,11 @@
 #= require cornerstone
 #= require namespace
 
+#= require_tree ./templates
+
 #= require_tree .
 
 steps = ko.observableArray()
-
-$("#hotkeys").append JST["templates/hotkeys"]()
 
 $("#data").append JST["templates/data"](
   data:
@@ -33,7 +33,7 @@ activeStep = null
 
 $("canvas").bind
   "touchstart mousedown": (event) ->
-    activeStep = Models.Rectangle
+    activeStep = activeTool
       start: Observable.Point localPosition(event)
       end: Observable.Point localPosition(event)
 

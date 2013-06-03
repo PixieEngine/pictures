@@ -4,5 +4,8 @@ namespace "Observable", (Observable) ->
       for key, value of attributes
         @[key](value)
 
+    value: ->
+      Point(@x(), @y())
+
     x: ko.observable(I.x)
     y: ko.observable(I.y)

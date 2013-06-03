@@ -1,26 +1,4 @@
-:coffeescript
-  data =
-    draw:
-      line: "x"
-      path: "a"
-      rect: "r"
-      circle: "c"
-      text: "t"
-      magnet: "u"
-      picture: "p"
-    adjust:
-      move: "v"
-      scale: "s"
-      rotate: "e"
-      duplicate: "d"
-    flow:
-      loop: "l"
-      if: "i"
-    modifiers:
-      guide: "g"
-      clip: "k"
-
-- for group, keys of data
+- for group, keys of @data
   %dl
     %div
       %h4= group
