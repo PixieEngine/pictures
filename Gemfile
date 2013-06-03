@@ -9,6 +9,7 @@ gem "haml_coffee_assets"
 gem "jquery-source"
 gem "middleman", "~> 3.0.12"
 gem "rack-contrib"
+gem "unicorn"
 
 group :development do
   gem "foreman"
