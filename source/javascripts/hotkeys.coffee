@@ -36,5 +36,13 @@ window.activeTool = Models.Line
   ["c", "Circle"]
 ].each ([key, tool]) ->
   $(document).on "keydown", null, key, ->
-    console.log key
     window.activeTool = Models[tool]
+
+[
+  ["v", "Move"]
+  ["s", "Scale"]
+  ["e", "Rotate"]
+  ["d", "Duplicate"]
+].each ([key, tool]) ->
+  $(document).on "keydown", null, key, ->
+    window.activeTool = Adjust[tool]

@@ -1,5 +1,3 @@
-%h3 Data
-- for key, value of @data
-  %div
-    .key= key
-    .value= value
+.data(data-bind="foreach: items")
+  .key(data-bind="text: $data[0]")
+  .value(data-bind="text: $data[1]")

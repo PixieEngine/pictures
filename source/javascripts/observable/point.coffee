@@ -1,15 +1,23 @@
 namespace "Observable", (Observable) ->
   Observable.Point = (I={}) ->
-    set: (attributes) ->
-      for key, value of attributes
-        @[key](value)
+    subscriptions = {}
 
-    value: ->
-      Point(@x(), @y())
+    self =
+      set: (attributes) ->
+        for key, value of attributes
+          @[key](value)
 
-    toBoundInput: ->
-      # TODO: Figure out these crazy bindings
-      JST["templates/point"]()
+      value: ->
+        Point(@x(), @y())
 
-    x: ko.observable(I.x)
-    y: ko.observable(I.y)
+      bind: (property, observable) ->
+        if previousSubscription = subscriptions[property]
+          previousSubscription.dispose()
+
+        subscriptions[property] = observable.subscribe (newValue) ->
+          self[property](newValue)
+
+      x: ko.observable(I.x)
+      y: ko.observable(I.y)
+
+    return self

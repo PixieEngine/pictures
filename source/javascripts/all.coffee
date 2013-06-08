@@ -1,22 +1,29 @@
 #= require hamlcoffee
 #= require jquery
+#= require underscore-min
 #= require knockout-2.2.1.debug
 #= require bootstrap
 #= require cornerstone
 #= require namespace
+#= require pixie_canvas
 
 #= require_tree ./templates
 #= require templater
 
 #= require_tree .
 
+# TODO Data View Class
+dataElement = $(JST["templates/data"]())
+$("#data").append dataElement
+data =
+  points: ko.observable 5
+  start: ko.observable 20
+  radical: ko.observable 150
+
+ko.applyBindings {items: _.pairs(data)}, dataElement.get(0)
+
+# TODO Steps view class
 steps = ko.observableArray()
-
-$("#data").append JST["templates/data"](
-  data:
-    points: 5
-)
-
 stepsElement = $(JST["templates/steps"]())
 $("#steps").append stepsElement
 ko.applyBindings {steps: steps}, stepsElement.get(0)
@@ -61,3 +68,10 @@ $("canvas").bind
     upperCanvas.clear()
 
     activeStep = null
+
+# Binding Events
+$(".steps").on "mouseup touchend", "input", (event) ->
+  data = ko.dataFor(event.currentTarget)
+  value = data.value()
+
+  # TODO
