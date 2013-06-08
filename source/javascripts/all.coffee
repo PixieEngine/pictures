@@ -1,5 +1,6 @@
 #= require hamlcoffee
 #= require jquery
+#= require jquery.event.move
 #= require underscore-min
 #= require knockout-2.2.1.debug
 #= require bootstrap
@@ -81,6 +82,15 @@ $(".steps").on "mouseup touchend", "input", (event) ->
   # TODO
   if dragBinding
     data.bind(property, dragBinding[1])
+
+$(document).on "move", ".adjustable", (event) ->
+  target = event.currentTarget
+
+  data = ko.dataFor(event.currentTarget)
+
+  property = $(target).data('property')
+
+  data[property](event.distX)
 
 $("#data").on "mousedown touchstart", ".datum", (event) ->
   data = ko.dataFor(event.currentTarget)

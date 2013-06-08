@@ -1,4 +1,4 @@
 .data(data-bind="foreach: items")
   .datum
     .key(data-bind="text: $data[0]")
-    .value(data-bind="text: $data[1]")
+    .value.adjustable(data-bind="text: $data[1]" data-property="1")

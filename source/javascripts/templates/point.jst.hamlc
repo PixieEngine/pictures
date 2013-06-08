@@ -1,2 +1,2 @@
-%input.bindy(data-bind="value: x" data-property="x")
-%input.bindy(data-bind="value: y" data-property="y")
+%input.bindy.adjustable(data-bind="value: x" data-property="x")
+%input.bindy.adjustable(data-bind="value: y" data-property="y")
