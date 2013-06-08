@@ -1,3 +1,4 @@
 .data(data-bind="foreach: items")
-  .key(data-bind="text: $data[0]")
-  .value(data-bind="text: $data[1]")
+  .datum
+    .key(data-bind="text: $data[0]")
+    .value(data-bind="text: $data[1]")

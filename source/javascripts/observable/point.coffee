@@ -17,6 +17,8 @@ namespace "Observable", (Observable) ->
         subscriptions[property] = observable.subscribe (newValue) ->
           self[property](newValue)
 
+        self[property](observable())
+
       x: ko.observable(I.x)
       y: ko.observable(I.y)
 

@@ -70,8 +70,22 @@ $("canvas").bind
     activeStep = null
 
 # Binding Events
+dragBinding = null
+
 $(".steps").on "mouseup touchend", "input", (event) ->
+  target = event.currentTarget
   data = ko.dataFor(event.currentTarget)
   value = data.value()
 
+  property = $(target).data("property")
   # TODO
+  if dragBinding
+    data.bind(property, dragBinding[1])
+
+$("#data").on "mousedown touchstart", ".datum", (event) ->
+  data = ko.dataFor(event.currentTarget)
+
+  dragBinding = data
+
+$(document).on "mouseup touchend", ->
+  dragBinding = null

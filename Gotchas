@@ -1,0 +1,15 @@
+Knockout
+
+If a template doesn't seem to be applying make sure that there is only one node as the root of the template.
+
+Good:
+
+    .item
+      .stuff
+      ...
+
+Bad:
+
+    .item
+      .stuff
+    .somethingElse <- Will not get bindings
