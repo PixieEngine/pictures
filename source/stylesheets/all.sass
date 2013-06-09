@@ -2,12 +2,22 @@
 @import "compass/css3"
 
 $blue: #a1b1c7
+$border-blue: darken($blue, 15%)
 $dark-blue: darken($blue, 40%)
+
+$pictures-background: #e2e6eb
 
 body
   +user-select(none)
 
+#data, #steps
+  border-right: 1px solid $border-blue
+
+#main
+  padding-top: 1em
+
 #pictures
+  background-color: $pictures-background
   height: 160px
 
 #viewport
@@ -20,6 +30,9 @@ body
 
 .container-fluid
   padding: 0
+
+.workspace
+  +box-shadow(rgba(0, 0, 0, 0.1) 0 -3px 6px)
 
 dt
   display: inline
@@ -71,6 +84,7 @@ input
     +text-shadow(rgba(255, 255, 255, 0.6) 0 1px 0px)
 
     background-color: $blue
+    border-bottom: 1px solid $border-blue
     color: $dark-blue
 
     font-size: 12px
