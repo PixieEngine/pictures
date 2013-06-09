@@ -7,6 +7,9 @@ $dark-blue: darken($blue, 40%)
 
 $pictures-background: #e2e6eb
 
+html, body
+  height: 100%
+
 body
   +user-select(none)
 
@@ -28,11 +31,16 @@ body
   canvas
     position: absolute
 
+.content
+  height: 100%
+
 .container-fluid
   padding: 0
 
 .workspace
   +box-shadow(rgba(0, 0, 0, 0.1) 0 -3px 6px)
+
+  height: 100%
 
 dt
   display: inline
