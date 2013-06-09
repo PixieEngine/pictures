@@ -5,7 +5,7 @@ $blue: #a1b1c7
 $border-blue: darken($blue, 15%)
 $dark-blue: darken($blue, 40%)
 
-$pictures-background: #e2e6eb
+$components-background: #e2e6eb
 
 html, body
   height: 100%
@@ -16,11 +16,14 @@ body
 #data, #steps
   border-right: 1px solid $border-blue
 
+.steps
+  height: 400px
+  overflow-y: scroll
+
 #main
   padding-top: 1em
 
 #pictures
-  background-color: $pictures-background
   height: 160px
 
 #viewport
@@ -88,6 +91,8 @@ input
   display: inline-block
 
 .component
+  background-color: $components-background
+
   h3
     +text-shadow(rgba(255, 255, 255, 0.6) 0 1px 0px)
 
@@ -103,6 +108,7 @@ input
 
 .step
   padding: 0.5em 0
+  padding-left: 0.5em
 
   &.selected
     background-color: #5EA7ED
@@ -117,4 +123,5 @@ input
 
   .description
     display: inline-block
-    width: 180px
+    width: 260px
+    vertical-align: top
