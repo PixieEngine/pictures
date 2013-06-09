@@ -58,7 +58,7 @@ input
   cursor: pointer
   display: inline-block
   margin: 0.25em
-  padding: 0 10px
+  padding: 0 5px
 
 .value
   display: inline-block
@@ -67,7 +67,6 @@ input
   h3
     +text-shadow(rgba(255, 255, 255, 0.6) 0 1px 0px)
 
-    //+background-image(linear-gradient(#fff, #ccc, #aaa))
     background-color: $blue
     color: $dark-blue
 
@@ -78,6 +77,12 @@ input
     text-align: center
 
 .step
+  padding: 0.5em 0
+
+  &.selected
+    background-color: #5EA7ED
+    color: #FFF
+
   .image
     border: 1px solid black
     background-color: white

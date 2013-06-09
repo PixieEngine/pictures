@@ -5,6 +5,9 @@ namespace "Models", (Models) ->
     template: ->
       "description/line"
 
+    magnetPoints: ->
+      [I.start.value(), I.end.value()]
+
     perform: (canvas) ->
       canvas.drawLine
         start: I.start.value()
