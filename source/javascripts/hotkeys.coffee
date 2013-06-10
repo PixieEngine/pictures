@@ -20,7 +20,7 @@ window.activeTool = Models.Line
   $(document).on "keydown", null, key, ->
     window.activeTool = Models[tool]
 
-    hotkeys.activeKey(key)
+    hotkeys.active(key)
 
 [
   ["v", "Move"]

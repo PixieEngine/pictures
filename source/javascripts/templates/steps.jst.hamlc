@@ -1,4 +1,4 @@
 .steps(data-bind="foreach: steps")
-  .step
+  .step(data-bind='css: {selected: $parent.active() == $index()}')
     .image
     .description(data-bind="template: {name: template}")

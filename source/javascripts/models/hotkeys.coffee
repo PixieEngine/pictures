@@ -33,5 +33,5 @@ namespace "Models", (Models) ->
 
       groups.push group
 
-    activeKey: ko.observable('x')
+    active: ko.observable('x')
     groups: groups

@@ -3,6 +3,6 @@
     %div
       %h4(data-bind='text: name')
       .actions(data-bind="foreach: $data")
-        .action(data-bind='css: {selected: $root.activeKey() == $data.value}')
+        .action(data-bind='css: {selected: $root.active() == $data.value}')
           %dd(data-bind='text: name')
           %dt(data-bind='text: value')

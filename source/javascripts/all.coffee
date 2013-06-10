@@ -27,16 +27,14 @@ data =
 ko.applyBindings Models.Data(data), dataElement.get(0)
 
 # TODO Steps view class
-steps = ko.observableArray()
+steps = Models.Steps()
 stepsElement = $(JST["templates/steps"]())
 $("#steps").append stepsElement
-ko.applyBindings {steps: steps}, stepsElement.get(0)
+ko.applyBindings steps, stepsElement.get(0)
 
 window.refreshCanvas = ->
   canvas.clear()
-
-  steps().forEach (step) ->
-    step.perform(canvas)
+  steps.draw(canvas)
 
 canvas = $("canvas#lower").pixieCanvas()
 upperCanvas = $("canvas#upper").pixieCanvas()
@@ -62,7 +60,7 @@ $("canvas").bind
 
     startPoint = localPosition(event)
 
-    steps.push activeStep
+    steps.add activeStep
 
   "touchmove mousemove": (event) ->
     return unless activeStep
