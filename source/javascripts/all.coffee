@@ -49,11 +49,18 @@ localPosition = (event) ->
 
 activeStep = null
 
+# don't draw unless we have moved a minimal distance.
+# Prevents drawing nearly invisible points
+startPoint = null
+MOVEMENT_THRESHOLD = 1
+
 $("canvas").bind
   "touchstart mousedown": (event) ->
     activeStep = activeTool
       start: Observable.Point localPosition(event)
       end: Observable.Point localPosition(event)
+
+    startPoint = localPosition(event)
 
     steps.push activeStep
 
@@ -67,9 +74,21 @@ $("canvas").bind
     activeStep.perform(upperCanvas)
 
   "touchend mouseup": (event) ->
-    activeStep.perform(canvas)
-    upperCanvas.clear()
+    currentPoint = localPosition(event)
 
+    dx = currentPoint.x - startPoint.x
+    dy = currentPoint.y - startPoint.y
+
+    magnitude = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
+
+    # only draw the shape if the mouse has moved
+    # far enough, otherwise pull it off the steps array
+    if magnitude > MOVEMENT_THRESHOLD
+      activeStep.perform(canvas)
+    else
+      steps.pop()
+
+    startPoint = null
     activeStep = null
 
 # Binding Events
