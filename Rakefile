@@ -3,6 +3,6 @@ task :deploy do
 end
 
 task :stats do
-  sh "wc -l `find . -type f -name '*.hamlc'`"
-  sh "wc -l `find . -type f -name '*.coffee'`"
+  sh "wc -l `find source -type f -name '*.hamlc'`"
+  sh "wc -l `find source -type f -name '*.coffee'`"
 end
