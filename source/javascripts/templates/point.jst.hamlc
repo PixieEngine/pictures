@@ -1,2 +1,6 @@
-%input.bindy.adjustable(data-bind="value: x" data-property="x")
-%input.bindy.adjustable(data-bind="value: y" data-property="y")
+.bindy.adjustable(data-property="x")
+  %input(data-bind="value: x, visible: !xName()")
+  %span.key(data-bind="text: xName, visible: xName()")
+.bindy.adjustable(data-property="y")
+  %input(data-bind="value: y, visible: !yName()")
+  %span.key(data-bind="text: yName, visible: yName()")

@@ -10,7 +10,13 @@ namespace "Observable", (Observable) ->
       value: ->
         Point(@x(), @y())
 
-      bind: (property, observable) ->
+      # TODO: Instead of binding on `Point` maybe we should bind on `Step` instances
+      bind: (property, source) ->
+        observable = source.value()[0].n
+        key = source.key
+
+        self["#{property}Name"](key)
+
         if previousSubscription = subscriptions[property]
           previousSubscription.invoke "dispose"
 
@@ -26,6 +32,9 @@ namespace "Observable", (Observable) ->
 
         # Update it in
         myObservable(observable())
+
+      xName: ko.observable()
+      yName: ko.observable()
 
       # should we have a separate method
       # for the formatted versions of these?

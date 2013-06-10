@@ -95,7 +95,7 @@ $("canvas").bind
 # Binding Events
 dragBinding = null
 
-$(".steps").on "mouseup touchend", "input", (event) ->
+$(".steps").on "mouseup touchend", ".bindy", (event) ->
   target = event.currentTarget
   data = ko.dataFor(event.currentTarget)
   value = data.value()
@@ -103,8 +103,8 @@ $(".steps").on "mouseup touchend", "input", (event) ->
   property = $(target).data("property")
 
   if dragBinding
-    # TODO Array magic
-    data.bind(property, dragBinding.value()[0].n)
+    # TODO: Consider binding on steps rather than on points
+    data.bind(property, dragBinding)
 
 $(document).on "move", ".adjustable", (event) ->
   target = event.currentTarget
