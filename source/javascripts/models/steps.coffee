@@ -14,6 +14,6 @@ namespace "Models", (Models) ->
       steps.pop()
       active(steps().length - 1)
 
-    draw: (canvas) ->
+    draw: (canvas, snaps=true) ->
       steps().forEach (step) ->
-        step.perform(canvas)
+        step.perform(canvas, snaps)

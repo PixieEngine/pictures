@@ -29,17 +29,18 @@ namespace "Models", (Models) ->
         Point(x, y1) # bottom middle
       ]
 
-    perform: (canvas) ->
+    perform: (canvas, snaps=true) ->
       canvas.drawCircle
         position: I.start.value()
         radius: @radius()
         color: "black"
 
-      for point in @snapPoints()
-        canvas.drawCircle
-          position: point
-          radius: 5
-          stroke:
-            width: 2
-            color: 'white'
-          color: '#3685c8'
+      if snaps
+        for point in @snapPoints()
+          canvas.drawCircle
+            position: point
+            radius: 5
+            stroke:
+              width: 2
+              color: 'white'
+            color: '#3685c8'

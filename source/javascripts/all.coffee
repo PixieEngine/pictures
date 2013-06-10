@@ -32,9 +32,9 @@ stepsElement = $(JST["templates/steps"]())
 $("#steps").append stepsElement
 ko.applyBindings steps, stepsElement.get(0)
 
-window.refreshCanvas = ->
+window.refreshCanvas = (snaps=true) ->
   canvas.clear()
-  steps.draw(canvas)
+  steps.draw(canvas, snaps)
 
 canvas = $("canvas#lower").pixieCanvas()
 upperCanvas = $("canvas#upper").pixieCanvas()
@@ -81,11 +81,8 @@ $("canvas").bind
 
     # only draw the shape if the mouse has moved
     # far enough, otherwise pull it off the steps array
-    if magnitude > MOVEMENT_THRESHOLD
-      activeStep.perform(canvas)
-    else
+    if magnitude <= MOVEMENT_THRESHOLD
       steps.pop()
-      refreshCanvas()
 
     startPoint = null
     activeStep = null

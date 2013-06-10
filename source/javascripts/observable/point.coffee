@@ -43,8 +43,8 @@ namespace "Observable", (Observable) ->
 
     # TODO: Not sure if this is the best place for these
     self.x.subscribe ->
-      refreshCanvas()
+      refreshCanvas(false)
     self.y.subscribe ->
-      refreshCanvas()
+      refreshCanvas(false)
 
     return self
