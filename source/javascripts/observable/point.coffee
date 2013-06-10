@@ -27,8 +27,10 @@ namespace "Observable", (Observable) ->
         # Update it in
         myObservable(observable())
 
-      x: ko.observable(I.x)
-      y: ko.observable(I.y)
+      # should we have a separate method
+      # for the formatted versions of these?
+      x: ko.observable(I.x.toFixed(1))
+      y: ko.observable(I.y.toFixed(1))
 
     # TODO: Not sure if this is the best place for these
     self.x.subscribe ->
