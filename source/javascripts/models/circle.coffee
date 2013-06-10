@@ -11,21 +11,22 @@ namespace "Models", (Models) ->
 
       Math.sqrt(dx * dx + dy * dy)
 
-    magnetPoints: ->
-      centerX = I.start.x()
-      centerY = I.start.y()
+    snapPoints: ->
+      x = parseInt(I.start.x())
+      y = parseInt(I.start.y())
 
-      x0 = I.start.x() - @radius()
-      x1 = I.start.x() + @radius()
+      x0 = x - @radius()
+      x1 = x + @radius()
 
-      y0 = I.start.y() - @radius()
-      y1 = I.start.y() + @radius()
+      y0 = y - @radius()
+      y1 = y + @radius()
 
       [
-        Point(x0, centerY) # left middle
-        Point(x1, centerY) # right middle
-        Point(centerX, y0) # top middle
-        Point(centerX, y1) # bottom middle
+        Point(x0, y) # left middle
+        Point(x1, y) # right middle
+        Point(x, y) # center
+        Point(x, y0) # top middle
+        Point(x, y1) # bottom middle
       ]
 
     perform: (canvas) ->
@@ -33,3 +34,12 @@ namespace "Models", (Models) ->
         position: I.start.value()
         radius: @radius()
         color: "black"
+
+      for point in @snapPoints()
+        canvas.drawCircle
+          position: point
+          radius: 5
+          stroke:
+            width: 2
+            color: 'white'
+          color: '#3685c8'
