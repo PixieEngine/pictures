@@ -30,4 +30,10 @@ namespace "Observable", (Observable) ->
       x: ko.observable(I.x)
       y: ko.observable(I.y)
 
+    # TODO: Not sure if this is the best place for these
+    self.x.subscribe ->
+      refreshCanvas()
+    self.y.subscribe ->
+      refreshCanvas()
+
     return self

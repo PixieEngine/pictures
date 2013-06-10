@@ -32,8 +32,7 @@ stepsElement = $(JST["templates/steps"]())
 $("#steps").append stepsElement
 ko.applyBindings {steps: steps}, stepsElement.get(0)
 
-# Redraw Canvas
-$(document).on "blur", "input", ->
+window.refreshCanvas = ->
   canvas.clear()
 
   steps().forEach (step) ->
