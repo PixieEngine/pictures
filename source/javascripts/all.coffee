@@ -87,6 +87,7 @@ $("canvas").bind
       activeStep.perform(canvas)
     else
       steps.pop()
+      refreshCanvas()
 
     startPoint = null
     activeStep = null

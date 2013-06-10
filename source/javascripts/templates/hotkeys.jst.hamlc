@@ -1,9 +1,8 @@
-- for group, keys of @data
+.hotkeys(data-bind="foreach: groups")
   %dl
     %div
-      %h4= group
-    - for name, value of keys
-      - activeClass = if name is 'line' then 'selected' else ''
-      .action(class="#{name} #{activeClass}")
-        %dd= name
-        %dt= value
+      %h4(data-bind='text: name')
+      .actions(data-bind="foreach: $data")
+        .action(data-bind='css: {selected: $root.activeKey() == $data.value}')
+          %dd(data-bind='text: name')
+          %dt(data-bind='text: value')

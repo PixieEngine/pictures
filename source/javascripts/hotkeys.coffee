@@ -1,29 +1,11 @@
 #= require jquery.hotkeys
 #= require_tree ./models
 
-hotkeys =
-  draw:
-    line: "x"
-    path: "a"
-    rectangle: "r"
-    circle: "c"
-    text: "t"
-    magnet: "u"
-    picture: "p"
-  adjust:
-    move: "v"
-    scale: "s"
-    rotate: "e"
-    duplicate: "d"
-  flow:
-    loop: "l"
-    if: "i"
-  modifiers:
-    guide: "g"
-    clip: "k"
-
-
-$("#hotkeys").append JST["templates/hotkeys"](data: hotkeys)
+# TODO Hotkeys view class
+hotkeys = Models.Hotkeys()
+hotkeysElement = $(JST["templates/hotkeys"]())
+$("#hotkeys").append hotkeysElement
+ko.applyBindings hotkeys, hotkeysElement.get(0)
 
 window.activeTool = Models.Line
 
@@ -38,9 +20,7 @@ window.activeTool = Models.Line
   $(document).on "keydown", null, key, ->
     window.activeTool = Models[tool]
 
-    # set tool as active in right hand panel
-    $('#hotkeys .action').removeClass('selected')
-    $(".#{tool.toLowerCase()}").addClass('selected')
+    hotkeys.activeKey(key)
 
 [
   ["v", "Move"]
