@@ -1,5 +1,6 @@
 .description
-  Draw line from
-  %span(data-bind="template: {name: 'point', data: I.start}")
-  to
-  %span(data-bind="template: {name: 'point', data: I.end}")
+  .text
+    Draw line from
+    %span(data-bind="template: {name: 'point', data: I.start}")
+    to
+    %span(data-bind="template: {name: 'point', data: I.end}")
