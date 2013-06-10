@@ -12,12 +12,20 @@ namespace "Observable", (Observable) ->
 
       bind: (property, observable) ->
         if previousSubscription = subscriptions[property]
-          previousSubscription.dispose()
+          previousSubscription.invoke "dispose"
 
-        subscriptions[property] = observable.subscribe (newValue) ->
+        # Bi-directional insanity
+        to = observable.subscribe (newValue) ->
           self[property](newValue)
 
-        self[property](observable())
+        myObservable = self[property]
+        from = myObservable.subscribe (newValue) ->
+          observable(newValue)
+
+        subscriptions[property] = [to, from]
+
+        # Update it in
+        myObservable(observable())
 
       x: ko.observable(I.x)
       y: ko.observable(I.y)
