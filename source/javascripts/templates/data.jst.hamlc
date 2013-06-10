@@ -1,4 +1,5 @@
 .data(data-bind="foreach: items")
   .datum
-    .key(data-bind="text: $data[0]")
-    .value.adjustable(data-bind="text: $data[1]" data-property="1")
+    .key(data-bind="text: key")
+    .value(data-bind="foreach: value")
+      %span.adjustable(data-bind="text: n" data-property="n")

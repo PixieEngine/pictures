@@ -1,0 +1,5 @@
+.data
+  = @items.each (item) ->
+    .datum
+      .key= item[0]
+      .value.adjustable= item[1]

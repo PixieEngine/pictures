@@ -1,0 +1,5 @@
+.description
+  Draw circle from
+  = template 'point', @start
+  to
+  = template 'point', @end

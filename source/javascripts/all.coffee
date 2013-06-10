@@ -17,11 +17,14 @@
 dataElement = $(JST["templates/data"]())
 $("#data").append dataElement
 data =
-  points: ko.observable 5
-  start: ko.observable 20
-  radical: ko.observable 150
+  points: 5
+  start: 20
+  radical: 150
+  x: [22, 44, 67, 82, 110]
+  y: [122, 39, 27, 202, 70]
+  width: [4, 4, 7, 5, 4]
 
-ko.applyBindings {items: _.pairs(data)}, dataElement.get(0)
+ko.applyBindings Models.Data(data), dataElement.get(0)
 
 # TODO Steps view class
 steps = ko.observableArray()
@@ -79,18 +82,20 @@ $(".steps").on "mouseup touchend", "input", (event) ->
   value = data.value()
 
   property = $(target).data("property")
-  # TODO
+
   if dragBinding
-    data.bind(property, dragBinding[1])
+    # TODO Array magic
+    data.bind(property, dragBinding.value()[0].n)
 
 $(document).on "move", ".adjustable", (event) ->
   target = event.currentTarget
 
   data = ko.dataFor(event.currentTarget)
 
-  property = $(target).data('property')
-
-  data[property](event.distX)
+  if property = $(target).data('property')
+    data[property](event.distX)
+  else
+    data(event.distX)
 
 $("#data").on "mousedown touchstart", ".datum", (event) ->
   data = ko.dataFor(event.currentTarget)
