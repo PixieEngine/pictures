@@ -60,16 +60,12 @@ $("canvas").bind
 
     startPoint = localPosition(event)
 
-    steps.add activeStep
+    steps.push activeStep
 
   "touchmove mousemove": (event) ->
     return unless activeStep
 
-    upperCanvas.clear()
-
     activeStep.I.end.set(localPosition(event))
-
-    activeStep.perform(upperCanvas)
 
   "touchend mouseup": (event) ->
     currentPoint = localPosition(event)
@@ -86,6 +82,12 @@ $("canvas").bind
 
     startPoint = null
     activeStep = null
+
+$(".steps").on "mouseup touchend", ".step", (event) ->
+  data = ko.dataFor(event.currentTarget)
+
+  steps.active(data)
+  refreshCanvas()
 
 # Binding Events
 dragBinding = null

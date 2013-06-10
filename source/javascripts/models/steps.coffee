@@ -1,19 +1,20 @@
 namespace "Models", (Models) ->
   Models.Steps = (data) ->
     steps = ko.observableArray()
-    active = ko.observable(0)
+    active = ko.observable()
 
     steps: steps
     active: active
 
-    add: (step) ->
+    push: (step) ->
       steps.push(step)
-      active(steps().length - 1)
+      active(step)
 
     pop: ->
       steps.pop()
-      active(steps().length - 1)
+      active(steps[steps.length - 1])
 
     draw: (canvas, snaps=true) ->
       steps().forEach (step) ->
+        snaps = step is active()
         step.perform(canvas, snaps)
