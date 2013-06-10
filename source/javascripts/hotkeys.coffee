@@ -5,7 +5,7 @@ hotkeys =
   draw:
     line: "x"
     path: "a"
-    rect: "r"
+    rectangle: "r"
     circle: "c"
     text: "t"
     magnet: "u"
@@ -37,6 +37,10 @@ window.activeTool = Models.Line
 ].each ([key, tool]) ->
   $(document).on "keydown", null, key, ->
     window.activeTool = Models[tool]
+
+    # set tool as active in right hand panel
+    $('#hotkeys .action').removeClass('selected')
+    $(".#{tool.toLowerCase()}").addClass('selected')
 
 [
   ["v", "Move"]

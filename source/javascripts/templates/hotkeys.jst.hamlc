@@ -3,6 +3,7 @@
     %div
       %h4= group
     - for name, value of keys
-      %div
+      - activeClass = if name is 'line' then 'selected' else ''
+      .action(class="#{name} #{activeClass}")
         %dd= name
         %dt= value
