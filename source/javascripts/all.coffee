@@ -58,11 +58,13 @@ MOVEMENT_THRESHOLD = 1
 
 $("canvas").bind
   "touchstart mousedown": (event) ->
-    activeStep = activeTool
-      start: Observable.Point localPosition(event)
-      end: Observable.Point localPosition(event)
+    position = localPosition(event)
 
-    startPoint = localPosition(event)
+    activeStep = activeTool
+      start: Observable.Point position
+      end: Observable.Point position
+
+    startPoint = position
 
     steps.push activeStep
 
@@ -84,8 +86,8 @@ $("canvas").bind
     if magnitude <= MOVEMENT_THRESHOLD
       steps.pop()
 
-    startPoint = null
     activeStep = null
+    startPoint = null
 
 $(".steps").on "mouseup touchend", ".step", (event) ->
   data = ko.dataFor(event.currentTarget)
