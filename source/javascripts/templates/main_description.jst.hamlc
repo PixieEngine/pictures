@@ -1,0 +1,2 @@
+.span7(data-bind="with: active")
+  .description(data-bind="template: {name: template}")

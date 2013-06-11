@@ -32,6 +32,10 @@ stepsElement = $(JST["templates/steps"]())
 $("#steps").append stepsElement
 ko.applyBindings steps, stepsElement.get(0)
 
+mainDescriptionElement = $(JST["templates/main_description"]())
+$("#main .description:eq(0)").append mainDescriptionElement
+ko.applyBindings steps, mainDescriptionElement.get(0)
+
 window.refreshCanvas = (snaps=true) ->
   canvas.clear()
   steps.draw(canvas, snaps)
