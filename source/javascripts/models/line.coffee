@@ -1,9 +1,18 @@
 namespace "Models", (Models) ->
   Models.Line = (I={}) ->
+    color = ko.observable('black')
+    strokeWidth = ko.observable(1)
+
     I: I
 
     template: ->
       "description/line"
+
+    color: color
+    strokeWidth: strokeWidth
+
+    overlaps: ->
+      false
 
     snapPoints: ->
       x0 = parseInt(I.start.x())
@@ -20,7 +29,10 @@ namespace "Models", (Models) ->
       canvas.drawLine
         start: I.start.value()
         end: I.end.value()
-        color: "black"
+        color: color()
+        stroke:
+          width: strokeWidth()
+          color: 'black'
 
       if snaps
         for point in @snapPoints()

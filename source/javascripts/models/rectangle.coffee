@@ -1,9 +1,26 @@
 namespace "Models", (Models) ->
   Models.Rectangle = (I={}) ->
+    color = ko.observable('black')
+    strokeWidth = ko.observable(1)
+
     I: I
 
     template: ->
       "description/rectangle"
+
+    color: color
+    strokeWidth: strokeWidth
+
+    overlaps: (position) ->
+      x = position.x
+      y = position.y
+
+      left = I.start.x()
+      right = I.end.x()
+      top = I.start.y()
+      bottom = I.end.y()
+
+      (left <= x <= right) && (top <= y <= bottom)
 
     snapPoints: ->
       width = I.end.x() - I.start.x()
@@ -31,9 +48,12 @@ namespace "Models", (Models) ->
       canvas.drawRect
         x: I.start.x()
         y: I.start.y()
+        stroke:
+          width: strokeWidth()
+          color: 'black'
         width: I.end.x() - I.start.x()
         height: I.end.y() - I.start.y()
-        color: "black"
+        color: color()
 
       if snaps
         for point in @snapPoints()

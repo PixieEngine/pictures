@@ -1,9 +1,18 @@
 namespace "Models", (Models) ->
   Models.Circle = (I={}) ->
+    color = ko.observable('black')
+    strokeWidth = ko.observable(1)
+
     I: I
 
     template: ->
       "description/circle"
+
+    color: color
+    strokeWidth: strokeWidth
+
+    overlaps: (position) ->
+      false
 
     radius: ->
       dx = I.end.x() - I.start.x()
@@ -33,7 +42,10 @@ namespace "Models", (Models) ->
       canvas.drawCircle
         position: I.start.value()
         radius: @radius()
-        color: "black"
+        color: color()
+        stroke:
+          width: strokeWidth()
+          color: 'black'
 
       if snaps
         for point in @snapPoints()
