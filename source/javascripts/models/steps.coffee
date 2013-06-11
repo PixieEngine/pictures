@@ -6,6 +6,10 @@ namespace "Models", (Models) ->
     steps: steps
     active: active
 
+    at: (position) ->
+      for step in steps()
+        step if step.overlaps(position)
+
     push: (step) ->
       steps.push(step)
       active(step)
