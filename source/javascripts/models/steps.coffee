@@ -26,7 +26,7 @@ namespace "Models", (Models) ->
           snaps = step is active()
 
           # TODO Real count for iterations
-          iterations = 10
+          iterations = 5
 
           iterations.times (n) ->
             debugger
