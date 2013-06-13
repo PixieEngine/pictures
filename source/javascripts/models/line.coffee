@@ -25,10 +25,12 @@ namespace "Models", (Models) ->
 
       [I.start.value(), midpoint, I.end.value()]
 
-    perform: (canvas, snaps=true) ->
+    perform: (canvas, options={}) ->
+      {snaps, n} = options
+
       canvas.drawLine
-        start: I.start.value()
-        end: I.end.value()
+        start: I.start.value(n)
+        end: I.end.value(n)
         color: color()
         stroke:
           width: strokeWidth()
