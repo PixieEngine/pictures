@@ -16,6 +16,14 @@ body
 #data, #steps
   border-right: 1px solid $border-blue
 
+.menu-container
+  +border-radius(4px)
+
+  width: 200px
+  min-height: 50px
+  position: absolute
+  z-index: 1
+
 .steps
   height: 400px
   overflow-y: scroll
@@ -33,6 +41,7 @@ body
   +box-shadow
 
   height: 400px
+  position: relative
 
   canvas
     position: absolute

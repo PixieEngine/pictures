@@ -2,6 +2,7 @@ namespace "Models", (Models) ->
   Models.Rectangle = (I={}) ->
     color = ko.observable('black')
     strokeWidth = ko.observable(1)
+    rotation = ko.observable(0)
 
     I: I
 
@@ -10,6 +11,14 @@ namespace "Models", (Models) ->
 
     color: color
     strokeWidth: strokeWidth
+    rotation: 0
+
+    measurements: ->
+      [
+        {name: 'width', value: I.end.x() - I.start.x()}
+        {name: 'height', value: I.end.y() - I.start.y()}
+        {name: 'rotation', value: rotation()}
+      ]
 
     overlaps: (position) ->
       x = position.x

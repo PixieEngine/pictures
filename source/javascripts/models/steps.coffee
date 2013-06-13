@@ -9,7 +9,7 @@ namespace "Models", (Models) ->
     iterated: iterated
 
     at: (position) ->
-      for step in steps()
+      steps().map (step) ->
         step if step.overlaps(position)
 
     push: (step) ->

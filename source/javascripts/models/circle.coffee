@@ -14,6 +14,9 @@ namespace "Models", (Models) ->
     overlaps: (position) ->
       false
 
+    measurements: ->
+      []
+
     radius: ->
       dx = I.end.x() - I.start.x()
       dy = I.end.y() - I.start.y()

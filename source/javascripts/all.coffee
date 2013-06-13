@@ -32,6 +32,11 @@ stepsElement = $(JST["templates/steps"]())
 $("#steps").append stepsElement
 ko.applyBindings steps, stepsElement.get(0)
 
+menu = Models.Menu()
+menuElement = $(JST["templates/menu"]())
+$("#menu").append menuElement
+ko.applyBindings menu, menuElement.get(0)
+
 mainDescriptionElement = $(JST["templates/main_description"]())
 $("#main .description:eq(0)").append mainDescriptionElement
 ko.applyBindings steps, mainDescriptionElement.get(0)
@@ -59,6 +64,10 @@ MOVEMENT_THRESHOLD = 1
 $("canvas").bind
   "touchstart mousedown": (event) ->
     position = localPosition(event)
+
+    if event.altKey
+      steps.at(position).compact().each (step) ->
+        menu.show(step)
 
     activeStep = activeTool
       start: Observable.Point position

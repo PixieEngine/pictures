@@ -11,6 +11,9 @@ namespace "Models", (Models) ->
     color: color
     strokeWidth: strokeWidth
 
+    measurements: ->
+      []
+
     overlaps: ->
       false
 

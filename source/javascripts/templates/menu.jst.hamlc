@@ -1,0 +1,15 @@
+.menu-container.component(data-bind='visible: visible, style: { left: x(), top: y()}')
+  .data
+    %h3 Data
+    .datum
+      .key Line's stroke color
+      .value(data-bind='text: color()')
+    .datum
+      .key Line's line width
+      .value(data-bind='text: strokeWidth()')
+  .measurements
+    %h3 Measurements
+    %div(data-bind="foreach: measurements()")
+      .datum
+        .key(data-bind='text: $data.name')
+        .value(data-bind='text: $data.value')
