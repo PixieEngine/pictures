@@ -29,8 +29,8 @@ namespace "Models", (Models) ->
       startY = I.start.y()
       endY = I.end.y()
 
-      f = (someX) =>
-        return @slope() * (someX - startX) + startY
+      f = (someX) ->
+        return (endY - startY) / (endX - startX) * (someX - startX) + startY
 
       Math.abs(f(x) - y) < TOLERANCE &&
       x >= startX &&
@@ -57,7 +57,6 @@ namespace "Models", (Models) ->
 
       return Math.sqrt(xComponent + yComponent)
 
-    # used to determine where to draw the menu
     center: ->
       midpoint = @midpoint()
 

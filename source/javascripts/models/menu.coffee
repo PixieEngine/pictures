@@ -23,6 +23,9 @@ namespace "Models", (Models) ->
 
     step: step
 
+    hide: ->
+      visible(false)
+
     show: (s) ->
       visible(true)
       step(s)

@@ -26,7 +26,6 @@ data =
 
 ko.applyBindings Models.Data(data), dataElement.get(0)
 
-# TODO Steps view class
 steps = Models.Steps()
 stepsElement = $(JST["templates/steps"]())
 $("#steps").append stepsElement
@@ -65,10 +64,6 @@ $("canvas").bind
   "touchstart mousedown": (event) ->
     position = localPosition(event)
 
-    if event.altKey
-      steps.at(position).compact().each (step) ->
-        menu.show(step)
-
     activeStep = activeTool
       start: Observable.Point position
       end: Observable.Point position
@@ -76,6 +71,14 @@ $("canvas").bind
     startPoint = position
 
     steps.push activeStep
+
+    # don't try and draw a shape if
+    # the context menu is triggered
+    if event.altKey
+      steps.at(position).compact().each (step) ->
+        menu.show(step)
+
+        steps.pop()
 
   "touchmove mousemove": (event) ->
     return unless activeStep
@@ -117,6 +120,11 @@ $(".steps").on "mouseup touchend", ".bindy", (event) ->
   if dragBinding
     # TODO: Consider binding on steps rather than on points
     data.bind(property, dragBinding)
+
+$(document).on "mouseup touchend", (e) ->
+  return if $(e.target).closest('.menu').length
+
+  menu.hide()
 
 $(document).on "move", ".adjustable", (event) ->
   target = event.currentTarget
