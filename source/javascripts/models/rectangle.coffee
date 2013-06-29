@@ -31,6 +31,17 @@ namespace "Models", (Models) ->
 
       (left <= x <= right) && (top <= y <= bottom)
 
+    center: ->
+      width = I.end.x() - I.start.x()
+      height = I.end.y() - I.start.y()
+
+      x0 = parseInt(I.start.x())
+      y0 = parseInt(I.start.y())
+
+      arrowHeight = 15
+
+      Point(x0 + (width / 2), y0 + (height / 2) + arrowHeight)
+
     snapPoints: ->
       width = I.end.x() - I.start.x()
       height = I.end.y() - I.start.y()

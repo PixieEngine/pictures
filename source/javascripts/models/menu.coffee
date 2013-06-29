@@ -12,10 +12,11 @@ namespace "Models", (Models) ->
       "#{step()?.strokeWidth() || '1px'}"
 
     x: ->
-      "#{step()?.I?.start?.x() || 0}px"
+      # hardcoded 100 since menu width is 200
+      "#{step()?.center().x - 100 || 0}px"
 
     y: ->
-      "#{step()?.I?.start?.y() || 0}px"
+      "#{step()?.center().y || 0}px"
 
     measurements: ->
       step()?.measurements() || []
