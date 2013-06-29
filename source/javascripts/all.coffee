@@ -79,6 +79,8 @@ $("canvas").bind
         menu.show(step)
 
         steps.pop()
+    else
+      menu.hide()
 
   "touchmove mousemove": (event) ->
     return unless activeStep
@@ -95,8 +97,8 @@ $("canvas").bind
 
     # only draw the shape if the mouse has moved
     # far enough, otherwise pull it off the steps array
-    if magnitude <= MOVEMENT_THRESHOLD
-      steps.pop()
+    # if magnitude <= MOVEMENT_THRESHOLD
+    #   steps.pop()
 
     activeStep = null
     startPoint = null
@@ -120,11 +122,6 @@ $(".steps").on "mouseup touchend", ".bindy", (event) ->
   if dragBinding
     # TODO: Consider binding on steps rather than on points
     data.bind(property, dragBinding)
-
-$(document).on "mouseup touchend", (e) ->
-  return if $(e.target).closest('.menu').length
-
-  menu.hide()
 
 $(document).on "move", ".adjustable", (event) ->
   target = event.currentTarget

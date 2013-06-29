@@ -7,8 +7,6 @@ ko.templateSources.stringTemplate = (template, templates) ->
 
 ko.utils.extend ko.templateSources.stringTemplate.prototype,
   data: (key, value) ->
-    console.log("data", key, value, @templateName)
-
     @templates._data = @templates._data || {}
     @templates._data[@templateName] = @templates._data[@templateName] || {}
 
@@ -18,8 +16,6 @@ ko.utils.extend ko.templateSources.stringTemplate.prototype,
       @templates._data[@templateName][key] = value
 
   text: (value) ->
-    console.log("text", value, @templateName)
-
     if arguments.length is 0
       @templates[@templateName]?() || @templates[@templateName]
     else
