@@ -29,7 +29,6 @@ namespace "Models", (Models) ->
           iterations = 5
 
           iterations.times (n) ->
-            debugger
             step.perform canvas,
               snaps: snaps
               n: n
