@@ -12,10 +12,26 @@ namespace "Models", (Models) ->
     strokeWidth: strokeWidth
 
     overlaps: (position) ->
-      false
+      x = position.x
+      y = position.y
+
+      centerX = parseInt(I.start.x())
+      centerY = parseInt(I.start.y())
+
+      Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2) <= Math.pow(@radius(), 2)
+
+    center: ->
+      x = parseInt(I.start.x())
+      y = parseInt(I.start.y())
+
+      arrowHeight = 15
+
+      Point(x, y + arrowHeight)
 
     measurements: ->
-      []
+      [
+        {name: 'radius', value: @radius()}
+      ]
 
     radius: ->
       dx = I.end.x() - I.start.x()
