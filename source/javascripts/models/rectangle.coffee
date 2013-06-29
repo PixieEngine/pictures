@@ -15,8 +15,8 @@ namespace "Models", (Models) ->
 
     measurements: ->
       [
-        {name: 'width', value: I.end.x() - I.start.x()}
-        {name: 'height', value: I.end.y() - I.start.y()}
+        {name: 'width', value: @width()}
+        {name: 'height', value: @height()}
         {name: 'rotation', value: rotation()}
       ]
 
@@ -31,26 +31,29 @@ namespace "Models", (Models) ->
 
       (left <= x <= right) && (top <= y <= bottom)
 
-    center: ->
-      width = I.end.x() - I.start.x()
-      height = I.end.y() - I.start.y()
+    width: ->
+      I.end.x() - I.start.x()
 
-      x0 = parseInt(I.start.x())
-      y0 = parseInt(I.start.y())
+    height: ->
+      I.end.y() - I.start.y()
+
+    center: ->
+      x0 = I.start.x()
+      y0 = I.start.y()
 
       arrowHeight = 15
 
-      Point(x0 + (width / 2), y0 + (height / 2) + arrowHeight)
+      Point(x0 + (@width() / 2), y0 + (@height() / 2) + arrowHeight)
 
     snapPoints: ->
-      width = I.end.x() - I.start.x()
-      height = I.end.y() - I.start.y()
+      width = @width()
+      height = @height()
 
-      x0 = parseInt(I.start.x())
-      x1 = parseInt(I.end.x())
+      x0 = I.start.x()
+      x1 = I.end.x()
 
-      y0 = parseInt(I.start.y())
-      y1 = parseInt(I.end.y())
+      y0 = I.start.y()
+      y1 = I.end.y()
 
       [
         Point(x0, y0) # top left

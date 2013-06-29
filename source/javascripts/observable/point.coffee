@@ -48,8 +48,8 @@ namespace "Observable", (Observable) ->
 
       # should we have a separate method
       # for the formatted versions of these?
-      x: ko.observable(I.x.toFixed(1))
-      y: ko.observable(I.y.toFixed(1))
+      x: ko.observable(parseFloat(I.x.toFixed(1)))
+      y: ko.observable(parseFloat(I.y.toFixed(1)))
 
     # TODO: Not sure if this is the best place for these
     self.x.subscribe ->

@@ -23,40 +23,41 @@ namespace "Models", (Models) ->
       x = position.x
       y = position.y
 
-      startX = parseInt(I.start.x())
-      endX = parseInt(I.end.x())
+      startX = I.start.x()
+      endX = I.end.x()
 
-      startY = parseInt(I.start.y())
-      endY = parseInt(I.end.y())
+      startY = I.start.y()
+      endY = I.end.y()
 
-      f = (someX) ->
-        return (endY - startY) / (endX - startX) * (someX - startX) + startY
+      f = (someX) =>
+        return @slope() * (someX - startX) + startY
 
       Math.abs(f(x) - y) < TOLERANCE &&
       x >= startX &&
       x <= endX
 
     slope: ->
-      x0 = parseInt(I.start.x())
-      x1 = parseInt(I.end.x())
+      x0 = I.start.x()
+      x1 = I.end.x()
 
-      y0 = parseInt(I.start.y())
-      y1 = parseInt(I.end.y())
+      y0 = I.start.y()
+      y1 = I.end.y()
 
       (y0 - y1) / (x0 - x1)
 
     length: ->
-      x0 = parseInt(I.start.x())
-      x1 = parseInt(I.end.x())
+      x0 = I.start.x()
+      x1 = I.end.x()
 
-      y0 = parseInt(I.start.y())
-      y1 = parseInt(I.end.y())
+      y0 = I.start.y()
+      y1 = I.end.y()
 
       xComponent = Math.pow(x1 - x0, 2)
       yComponent = Math.pow(y1 - y0, 2)
 
       return Math.sqrt(xComponent + yComponent)
 
+    # used to determine where to draw the menu
     center: ->
       midpoint = @midpoint()
 
@@ -65,11 +66,11 @@ namespace "Models", (Models) ->
       Point(midpoint.x, midpoint.y + arrowHeight)
 
     midpoint: ->
-      x0 = parseInt(I.start.x())
-      x1 = parseInt(I.end.x())
+      x0 = I.start.x()
+      x1 = I.end.x()
 
-      y0 = parseInt(I.start.y())
-      y1 = parseInt(I.end.y())
+      y0 = I.start.y()
+      y1 = I.end.y()
 
       Point((x1 + x0) / 2, (y1 + y0) / 2)
 

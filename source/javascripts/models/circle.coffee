@@ -15,14 +15,14 @@ namespace "Models", (Models) ->
       x = position.x
       y = position.y
 
-      centerX = parseInt(I.start.x())
-      centerY = parseInt(I.start.y())
+      centerX = I.start.x()
+      centerY = I.start.y()
 
       Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2) <= Math.pow(@radius(), 2)
 
     center: ->
-      x = parseInt(I.start.x())
-      y = parseInt(I.start.y())
+      x = I.start.x()
+      y = I.start.y()
 
       arrowHeight = 15
 
@@ -40,8 +40,8 @@ namespace "Models", (Models) ->
       Math.sqrt(dx * dx + dy * dy)
 
     snapPoints: ->
-      x = parseInt(I.start.x())
-      y = parseInt(I.start.y())
+      x = I.start.x()
+      y = I.start.y()
 
       x0 = x - @radius()
       x1 = x + @radius()
