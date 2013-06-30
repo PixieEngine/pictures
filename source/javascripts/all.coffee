@@ -72,16 +72,17 @@ $('canvas').bind
         menu.show(step)
 
         e.stopImmediatePropagation()
-    else if e.keyCode is 86
+    else if e.which is 1 && activeTool().move
       e.stopImmediatePropagation()
 
   'touchmove mousemove': (e) ->
     position = localPosition(e)
 
-    if e.keyCode is 86 # Move modifier 'v'
+    # hack: detect if this is the move tool
+    # by checking if it has the move method
+    if e.which is 1 && activeTool().move
       if step = steps.at(position).compact().first()
-        console.log(step)
-        step.I.start.set(position)
+        activeTool().move(step, position)
 
         e.stopImmediatePropagation()
 
