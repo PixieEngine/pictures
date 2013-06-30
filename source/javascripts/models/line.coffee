@@ -15,6 +15,25 @@ namespace "Models", (Models) ->
     strokeColor: strokeColor
     strokeWidth: strokeWidth
 
+    # here, position is the upper left hand corner
+    moveTo: (position) ->
+      startX = I.start.x()
+      midX = @midpoint().x
+
+      startY = I.start.y()
+      midY = @midpoint().y
+
+      xComponent = midX - startX
+      yComponent = midY - startY
+
+      # start by moving the start point
+      I.start.x(position.x - xComponent)
+      I.start.y(position.y - yComponent)
+
+      # make sure to move the end the same amount
+      I.end.x(position.x + xComponent)
+      I.end.y(position.y + yComponent)
+
     measurements: ->
       [
         {name: "Length", value: @length()}
