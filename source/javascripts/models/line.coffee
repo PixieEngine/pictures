@@ -41,7 +41,7 @@ namespace "Models", (Models) ->
       ]
 
     overlaps: (position) ->
-      TOLERANCE = 5
+      TOLERANCE = 30
 
       x = position.x
       y = position.y
