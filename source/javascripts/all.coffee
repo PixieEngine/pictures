@@ -82,9 +82,27 @@ $('canvas').bind
     # by checking if it has the move method
     if e.which is 1 && activeTool().move
       if step = steps.at(position).compact().first()
+        movingStep = step
+
         activeTool().move(step, position)
 
         e.stopImmediatePropagation()
+
+  # TODO copy the step and instead of updating
+  # the coordinates in the shapes history, create a
+  # new step that says Moved <shape> from blah to blah
+  # 'touchend mouseup': (e) ->
+  #   position = localPosition(e)
+
+  #   if movingStep
+  #     activeStep = activeTool
+  #       start: Observable.Point position
+  #       end: Observable.Point position
+
+  #     steps.push activeStep
+
+  #     movingStep = null
+  #     e.stopImmediatePropagation()
 
 $("canvas").bind
   "touchstart mousedown": (event) ->
