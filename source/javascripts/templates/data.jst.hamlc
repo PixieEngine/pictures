@@ -1,6 +1,8 @@
-.data(data-bind="foreach: items")
-  .datum
-    %input.key(data-bind="value: key")
-    .value(data-bind="foreach: value")
-      %span.adjustable(data-bind="text: n" data-property="n")
-    %plus(data-bind="event: {mousedown: addItem}") +
+%div
+  .data(data-bind="foreach: items")
+    .datum
+      %input.key(data-bind="value: key")
+      .value(data-bind="foreach: value")
+        %span.adjustable(data-bind="text: n" data-property="n")
+      %plus(data-bind="event: {mousedown: addItem}") +
+  %plus(data-bind="event: {mousedown: addRow}") +

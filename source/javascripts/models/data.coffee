@@ -8,3 +8,5 @@ namespace "Models", (Models) ->
       items.push Models.Datum(key, value)
 
     items: items
+    addRow: ->
+      @items.push Models.Datum("new_data", [])
