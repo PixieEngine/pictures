@@ -7,6 +7,14 @@ $dark-blue: darken($blue, 40%)
 
 $components-background: #e2e6eb
 
+$pictures-height: 160px
+$data-height: 180px
+
+$steps-width: 350px
+
+*
+  +box-sizing(border-box)
+
 html, body
   height: 100%
 
@@ -15,6 +23,31 @@ body
 
 #data, #steps
   border-right: 1px solid $border-blue
+  border-bottom: 1px solid $border-blue
+
+#steps
+  position: fixed
+  top: $pictures-height + $data-height
+  left: 0
+  bottom: 0
+  width: $steps-width
+  padding-bottom: 1.25em
+
+.steps
+  overflow: auto
+  height: 100%
+
+#main
+  position: fixed
+  top: 160px
+  left: $steps-width
+
+#data
+  position: fixed
+  top: $pictures-height
+  width: $steps-width
+  height: $data-height
+  overflow: auto
 
 .menu-container
   +border-radius(2px)
@@ -49,23 +82,24 @@ body
 
   border-bottom: 12px solid $blue
 
-.steps
-  height: 400px
-  overflow-y: scroll
-
 #main
   padding-top: 1em
+  padding-left: 1.5em
 
   .description
     height: 3em
 
 #pictures
-  height: 160px
+  border-bottom: 1px solid #7189aa
+  height: $pictures-height
+  width: 100%
+  position: fixed
 
 #viewport
   +box-shadow
 
   height: 400px
+  width: 600px
   position: relative
 
   canvas
@@ -137,7 +171,6 @@ dl
     +text-shadow(rgba(255, 255, 255, 0.6) 0 1px 0px)
 
     background-color: $blue
-    border: 1px solid $border-blue
     color: $dark-blue
 
     font-size: 12px
@@ -147,6 +180,10 @@ dl
     text-align: center
 
 #hotkeys
+  position: fixed
+  top: 200px
+  right: 10px
+
   .action
     &.selected
       background-color: #aaa

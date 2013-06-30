@@ -1,17 +1,15 @@
-.row-fluid.workspace
-  .span4
-    .row-fluid.component#data
-      %h3 Data
+.workspace
+  .component#data
+    %h3 Data
 
-    .row-fluid.component#steps
-      %h3 Steps
+  .component#steps
+    %h3 Steps
 
-  .span8#main
-    .row-fluid.description
+  #main
+    .description
 
-    .row-fluid
-      .span7#viewport
-        #menu
-        %canvas#lower(width=535 height=400)
-        %canvas#upper(width=535 height=400)
-      .span2#hotkeys
+    #viewport
+      #menu
+      %canvas#lower(width=535 height=400)
+      %canvas#upper(width=535 height=400)
+    #hotkeys
