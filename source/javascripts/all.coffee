@@ -58,6 +58,16 @@ activeStep = null
 startPoint = null
 MOVEMENT_THRESHOLD = 1
 
+$('canvas').bind
+  'touchstart mousedown': (e) ->
+    if e.altKey
+      position = localPosition(event)
+
+      steps.at(position).compact().each (step) ->
+        menu.show(step)
+
+        e.stopImmediatePropagation()
+
 $("canvas").bind
   "touchstart mousedown": (event) ->
     position = localPosition(event)
@@ -70,15 +80,7 @@ $("canvas").bind
 
     steps.push activeStep
 
-    # don't try and draw a shape if
-    # the context menu is triggered
-    if event.altKey
-      steps.at(position).compact().each (step) ->
-        menu.show(step)
-
-        steps.pop()
-    else
-      menu.hide()
+    menu.hide()
 
   "touchmove mousemove": (event) ->
     return unless activeStep
@@ -97,8 +99,8 @@ $("canvas").bind
 
     # only draw the shape if the mouse has moved
     # far enough, otherwise pull it off the steps array
-    # if magnitude <= MOVEMENT_THRESHOLD
-    #   steps.pop()
+    if magnitude <= MOVEMENT_THRESHOLD
+      steps.pop()
 
     activeStep = null
     startPoint = null
@@ -123,6 +125,8 @@ $(".steps").on "mouseup touchend", ".bindy", (event) ->
     # TODO: Consider binding on steps rather than on points
     data.bind(property, dragBinding)
 
+# used for color picker right now. Not
+# the best way to get the color to update
 $(document).on 'change', 'input[type="color"]', (e) ->
   refreshCanvas()
 
