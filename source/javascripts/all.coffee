@@ -133,6 +133,7 @@ $(document).on "move", ".adjustable", (event) ->
 
   if property = $(target).data('property')
     data[property](event.distX)
+    data[property]()?(event.distX) # HAX for stroke width
   else
     data(event.distX)
 

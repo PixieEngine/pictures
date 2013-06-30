@@ -7,13 +7,15 @@ namespace "Models", (Models) ->
 
     I: I
 
+    type: 'Rectangle'
+
     template: ->
       "description/rectangle"
 
     color: color
     strokeColor: strokeColor
     strokeWidth: strokeWidth
-    rotation: 0
+    rotation: rotation
 
     measurements: ->
       [

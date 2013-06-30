@@ -4,14 +4,20 @@
     .data
       %h3 Data
       .datum
-        .key Line's fill color
+        .key
+          %span(data-bind='text: type()')>
+          's fill color
         %input.value.color(type='color' data-bind='value: color()')
       .datum
-        .key Line's stroke color
+        .key
+          %span(data-bind='text: type()')>
+          's stroke color
         %input.value.color(type='color' data-bind='value: strokeColor()')
       .datum
-        .key Line's line width
-        .value(data-bind='text: strokeWidth()')
+        .key
+          %span(data-bind='text: type()')>
+          's line width
+        .value.adjustable(data-bind="text: strokeWidth()" data-property="strokeWidth")
     .measurements
       %h3 Measurements
       %div(data-bind="foreach: measurements()")

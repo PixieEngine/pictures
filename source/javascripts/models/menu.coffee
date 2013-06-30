@@ -12,7 +12,10 @@ namespace "Models", (Models) ->
       step()?.strokeColor
 
     strokeWidth: ->
-      step()?.strokeWidth()
+      step()?.strokeWidth
+
+    type: ->
+      step()?.type
 
     x: ->
       # hardcoded 100 since menu width is 200

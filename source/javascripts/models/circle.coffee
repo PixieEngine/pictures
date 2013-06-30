@@ -6,6 +6,8 @@ namespace "Models", (Models) ->
 
     I: I
 
+    type: 'Circle'
+
     template: ->
       "description/circle"
 

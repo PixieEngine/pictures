@@ -6,6 +6,8 @@ namespace "Models", (Models) ->
 
     I: I
 
+    type: 'Line'
+
     template: ->
       "description/line"
 
