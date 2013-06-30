@@ -8,3 +8,4 @@ namespace "Models", (Models) ->
 
     key: key
     value: array
+    type: 'number'

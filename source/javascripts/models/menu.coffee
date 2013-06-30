@@ -6,10 +6,10 @@ namespace "Models", (Models) ->
     visible: visible
 
     color: ->
-      "#{step()?.color() || '#000'}"
+      step()?.color
 
     strokeWidth: ->
-      "#{step()?.strokeWidth() || '1px'}"
+      step()?.strokeWidth()
 
     x: ->
       # hardcoded 100 since menu width is 200

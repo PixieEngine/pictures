@@ -5,7 +5,7 @@
       %h3 Data
       .datum
         .key Line's stroke color
-        .value(data-bind='text: color()')
+        %input.value.color(type='color' data-bind='value: color()')
       .datum
         .key Line's line width
         .value(data-bind='text: strokeWidth()')

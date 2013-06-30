@@ -123,6 +123,9 @@ $(".steps").on "mouseup touchend", ".bindy", (event) ->
     # TODO: Consider binding on steps rather than on points
     data.bind(property, dragBinding)
 
+$(document).on 'change', 'input[type="color"]', (e) ->
+  refreshCanvas()
+
 $(document).on "move", ".adjustable", (event) ->
   target = event.currentTarget
 
