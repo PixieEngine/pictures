@@ -8,6 +8,9 @@ namespace "Models", (Models) ->
     color: ->
       step()?.color
 
+    strokeColor: ->
+      step()?.strokeColor
+
     strokeWidth: ->
       step()?.strokeWidth()
 

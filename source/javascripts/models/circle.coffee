@@ -1,6 +1,7 @@
 namespace "Models", (Models) ->
   Models.Circle = (I={}) ->
     color = ko.observable('black')
+    strokeColor = ko.observable('black')
     strokeWidth = ko.observable(1)
 
     I: I
@@ -9,6 +10,7 @@ namespace "Models", (Models) ->
       "description/circle"
 
     color: color
+    strokeColor: strokeColor
     strokeWidth: strokeWidth
 
     overlaps: (position) ->
@@ -64,7 +66,7 @@ namespace "Models", (Models) ->
         color: color()
         stroke:
           width: strokeWidth()
-          color: 'black'
+          color: strokeColor()
 
       if snaps
         for point in @snapPoints()

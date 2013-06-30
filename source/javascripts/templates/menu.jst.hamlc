@@ -4,8 +4,11 @@
     .data
       %h3 Data
       .datum
-        .key Line's stroke color
+        .key Line's fill color
         %input.value.color(type='color' data-bind='value: color()')
+      .datum
+        .key Line's stroke color
+        %input.value.color(type='color' data-bind='value: strokeColor()')
       .datum
         .key Line's line width
         .value(data-bind='text: strokeWidth()')

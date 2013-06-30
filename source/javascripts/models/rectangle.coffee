@@ -1,6 +1,7 @@
 namespace "Models", (Models) ->
   Models.Rectangle = (I={}) ->
     color = ko.observable('black')
+    strokeColor = ko.observable('black')
     strokeWidth = ko.observable(1)
     rotation = ko.observable(0)
 
@@ -10,6 +11,7 @@ namespace "Models", (Models) ->
       "description/rectangle"
 
     color: color
+    strokeColor: strokeColor
     strokeWidth: strokeWidth
     rotation: 0
 
@@ -73,9 +75,9 @@ namespace "Models", (Models) ->
         y: I.start.y()
         stroke:
           width: strokeWidth()
-          color: 'black'
-        width: I.end.x() - I.start.x()
-        height: I.end.y() - I.start.y()
+          color: strokeColor()
+        width: @width()
+        height: @height()
         color: color()
 
       if snaps

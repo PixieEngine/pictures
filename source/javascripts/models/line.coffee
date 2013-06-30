@@ -1,6 +1,7 @@
 namespace "Models", (Models) ->
   Models.Line = (I={}) ->
     color = ko.observable('black')
+    strokeColor = ko.observable('black')
     strokeWidth = ko.observable(1)
 
     I: I
@@ -9,6 +10,7 @@ namespace "Models", (Models) ->
       "description/line"
 
     color: color
+    strokeColor: strokeColor
     strokeWidth: strokeWidth
 
     measurements: ->
@@ -85,7 +87,7 @@ namespace "Models", (Models) ->
         color: color()
         stroke:
           width: strokeWidth()
-          color: 'black'
+          color: strokeColor()
 
       if snaps
         for point in @snapPoints()
