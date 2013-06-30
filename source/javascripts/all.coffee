@@ -48,10 +48,8 @@ canvas = $("canvas#lower").pixieCanvas()
 upperCanvas = $("canvas#upper").pixieCanvas()
 
 localPosition = (event) ->
-  offset = $(event.currentTarget).offset()
-
-  x: event.pageX - offset.left
-  y: event.pageY - offset.top
+  x: event.offsetX
+  y: event.offsetY
 
 activeStep = null
 
