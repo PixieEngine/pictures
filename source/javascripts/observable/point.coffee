@@ -1,7 +1,6 @@
 namespace "Observable", (Observable) ->
   Observable.Point = (I={}) ->
     subscriptions = {}
-    sources = {}
 
     self =
       set: (attributes) ->
@@ -9,21 +8,16 @@ namespace "Observable", (Observable) ->
           @[key](value)
 
       value: (n=0) ->
-        if x = sources["x"]
-          x = x.value().wrap(n).n()
-        if y = sources["y"]
-          y = y.value().wrap(n).n()
-
         Point(x ? @x(), y ? @y())
 
       # TODO: Instead of binding on `Point` maybe we should bind on `Step` instances
       bind: (property, source) ->
         observable = source.value()[0].n
-        key = source.key
 
-        sources[key] = source
-
-        self["#{property}Name"](key)
+        # Observe any name changes from the data source
+        self["#{property}Name"](source.key())
+        keyObservable = source.key.subscribe (newValue) ->
+          self["#{property}Name"](newValue)
 
         # TODO Need to observe all source values for live-updating iterations
 
@@ -38,7 +32,7 @@ namespace "Observable", (Observable) ->
         from = myObservable.subscribe (newValue) ->
           observable(newValue)
 
-        subscriptions[property] = [to, from]
+        subscriptions[property] = [to, from, keyObservable]
 
         # Update it in
         myObservable(observable())

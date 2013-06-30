@@ -86,6 +86,8 @@ $("canvas").bind
     activeStep.I.end.set(localPosition(event))
 
   "touchend mouseup": (event) ->
+    return unless activeStep
+
     currentPoint = localPosition(event)
 
     dx = currentPoint.x - startPoint.x

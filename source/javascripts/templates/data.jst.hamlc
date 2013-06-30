@@ -1,5 +1,6 @@
 .data(data-bind="foreach: items")
   .datum
-    .key(data-bind="text: key")
+    %input.key(data-bind="value: key")
     .value(data-bind="foreach: value")
       %span.adjustable(data-bind="text: n" data-property="n")
+    %plus(data-bind="event: {mousedown: addItem}") +
