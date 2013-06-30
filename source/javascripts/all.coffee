@@ -58,13 +58,30 @@ activeStep = null
 startPoint = null
 MOVEMENT_THRESHOLD = 1
 
+# deal with all modifier keys here, then
+# call stopImmediatePropagation to avoid
+# drawing any new shapes
+movingStep = null
+
 $('canvas').bind
   'touchstart mousedown': (e) ->
-    if e.altKey
-      position = localPosition(event)
+    position = localPosition(e)
 
+    if e.altKey
       steps.at(position).compact().each (step) ->
         menu.show(step)
+
+        e.stopImmediatePropagation()
+    else if e.keyCode is 86
+      e.stopImmediatePropagation()
+
+  'touchmove mousemove': (e) ->
+    position = localPosition(e)
+
+    if e.keyCode is 86 # Move modifier 'v'
+      if step = steps.at(position).compact().first()
+        console.log(step)
+        step.I.start.set(position)
 
         e.stopImmediatePropagation()
 

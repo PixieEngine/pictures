@@ -30,3 +30,5 @@ window.activeTool = Models.Line
 ].each ([key, tool]) ->
   $(document).on "keydown", null, key, ->
     window.activeTool = Adjust[tool]
+
+    hotkeys.active(key)

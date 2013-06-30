@@ -1,0 +1,6 @@
+.description
+  .text
+    Move shape from
+    %span(data-bind="template: {name: 'point', data: I.start}")
+    to
+    %span(data-bind="template: {name: 'point', data: I.end}")

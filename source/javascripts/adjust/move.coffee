@@ -3,6 +3,7 @@ namespace "Adjust", (Adjust) ->
     I: I
 
     template: ->
+      "description/move"
 
     perform: (canvas) ->
-
+      ;
