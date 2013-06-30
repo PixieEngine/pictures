@@ -15,6 +15,19 @@ namespace "Models", (Models) ->
     strokeColor: strokeColor
     strokeWidth: strokeWidth
 
+    # here, position is the center point
+    moveTo: (position) ->
+      xDiff = position.x - I.start.x()
+      yDiff = position.y - I.start.y()
+
+      # start by moving the start point
+      I.start.x(position.x)
+      I.start.y(position.y)
+
+      # make sure to move the end the same amount
+      I.end.x(I.end.x() + xDiff)
+      I.end.y(I.end.y() + yDiff)
+
     overlaps: (position) ->
       x = position.x
       y = position.y

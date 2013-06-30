@@ -17,6 +17,19 @@ namespace "Models", (Models) ->
     strokeWidth: strokeWidth
     rotation: rotation
 
+    # here, position is the upper left hand corner
+    moveTo: (position) ->
+      hw = @width() / 2
+      hh = @height() / 2
+
+      # start by moving the start point
+      I.start.x(position.x - hw)
+      I.start.y(position.y - hh)
+
+      # make sure to move the end the same amount
+      I.end.x(position.x + hw)
+      I.end.y(position.y + hh)
+
     measurements: ->
       [
         {name: 'width', value: @width()}
